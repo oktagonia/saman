@@ -29,3 +29,7 @@ samples = ellipse.sample(n_samples=100, M=2.5)
 
 See `demo.ipynb` for more examples.
 
+## Todo
+
+- [ ] Move core logic to C++ backend and create R and Python libraries by FFIing.
+- [ ] Write expository article about how this is done.
