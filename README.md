@@ -3,7 +3,7 @@
 Sampling algorithms for probability distributions on manifolds using Riemannian geometry. Generates samples from arbitrary curves and surfaces by performing pullback on the input density.
 
 $$
- \int_{\phi(U)} f\,dV = \int_U  f(\phi(x)) \det(\phi'(x)^T \phi'(x))\,dx
+ \int_{\phi(U)} fdV = \int_U  f(\phi(x)) \det(\phi'(x)^T \phi'(x))^{1/2}dx_1\dots dx_k
 $$
 
 ![Torus Sampling](output.png)
@@ -11,22 +11,18 @@ $$
 ## Usage
 
 ```python
-from curve import Curve
-from surface import Surface
+from manifold import Manifold
+import numpy as np
 
 # Sample from ellipse
-ellipse = Curve(
-    lambda t: np.array([2*np.cos(t), np.sin(t)]), 
-    lambda t: np.array([-2*np.sin(t), np.cos(t)]), 
-    bounds=(0, 2*np.pi)
+ellipse = Manifold(
+    coords=lambda t: np.array([2*np.cos(t[0]), np.sin(t[0])]),
+    pushforward=lambda t: np.array([[-2*np.sin(t[0])], [np.cos(t[0])]]),
+    dim=1,
+    bounds=[(0, 2*np.pi)]
 )
-samples = ellipse.uniform_sample2(100)
-
-# Sample from torus
-torus = Surface(torus_chart, pushforward=torus_pushforward, 
-                t_bounds=(0, 2*np.pi), s_bounds=(0, 2*np.pi))
-samples = torus.uniform_sample(100)
+samples = ellipse.sample(n_samples=100, M=2.5)
 ```
 
-See `manifold_sampling.ipynb` for full examples.
+See `demo.ipynb` for more examples.
 
