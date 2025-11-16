@@ -6,6 +6,9 @@ $$
  \int_{\phi(U)} fdV = \int_U  f(\phi(x)) \det(\phi'(x)^T \phi'(x))^{1/2}dx_1\dots dx_k
 $$
 
+Sampling on $\mathbb{R}^k$ is done using rejection sampling with a uniform proposal distribution.
+This is done under the assumption that pulled-back density is bounded.
+
 ![Torus Sampling](output.png)
 
 ## Usage
