@@ -9,7 +9,7 @@ $$
 Sampling on $\mathbb{R}^k$ is done using rejection sampling with a uniform proposal distribution.
 This is done under the assumption that pulled-back density is bounded.
 
-![Torus Sampling](output.png)
+<p align="center"><img src="output.png" alt="Torus Sampling" width="500"></p>
 
 ## Usage
 
