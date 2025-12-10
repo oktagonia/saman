@@ -17,7 +17,6 @@ This is done under the assumption that pulled-back density is bounded.
 from saman import Manifold
 import numpy as np
 
-# Sample from ellipse
 class Ellipse(Manifold):
     def __init__(self):
         super().__init__(2, 1, 2.5, np.array([0.0]), np.array([2.0 * np.pi]))
