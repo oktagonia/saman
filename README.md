@@ -14,22 +14,30 @@ This is done under the assumption that pulled-back density is bounded.
 ## Usage
 
 ```python
-from manifold import Manifold
+from saman import Manifold
 import numpy as np
 
 # Sample from ellipse
-ellipse = Manifold(
-    coords=lambda t: np.array([2*np.cos(t[0]), np.sin(t[0])]),
-    pushforward=lambda t: np.array([[-2*np.sin(t[0])], [np.cos(t[0])]]),
-    dim=1,
-    bounds=[(0, 2*np.pi)]
-)
-samples = ellipse.sample(n_samples=100, M=2.5)
+class Ellipse(Manifold):
+    def __init__(self):
+        super().__init__(2, 1, 2.5, np.array([0.0]), np.array([2.0 * np.pi]))
+
+    def coord(self, t):
+        return np.array([2*np.cos(t[0]), np.sin(t[0])])
+
+    def pushforward(self, t):
+        return np.array([[-2*np.sin(t[0])], [np.cos(t[0])]])
+
+ellipse = Ellipse()
+samples = ellipse.sample(n_samples=100)
 ```
 
 See `demo.ipynb` for more examples.
 
 ## Todo
 
-- [ ] Move core logic to C++ backend and create R and Python libraries by FFIing.
+- [x] Move core logic to C++
+- [x] Create python bindings
+- [ ] Create R bindings
+- [x] Demo library by computing mean Hausdorff distance.
 - [ ] Write expository article about how this is done.
