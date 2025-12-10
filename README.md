@@ -11,6 +11,10 @@ This is done under the assumption that pulled-back density is bounded.
 
 <p align="center"><img src="output.png" alt="Torus Sampling" width="500"></p>
 
+## Compilation
+
+To compile python bindings run `make python`. To compile C++ demos run `make ellipse` or `make torus`.
+
 ## Usage
 
 ```python
