@@ -1,0 +1,4 @@
+useDynLib(saman, .registration = TRUE)
+importFrom(Rcpp, evalCpp)
+
+export(saman.manifold)

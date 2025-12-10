@@ -1,0 +1,11 @@
+Package: saman
+Type: Package
+Title: Sampling from Manifolds
+Version: 0.0.1
+Authors@R: person("Kian Dianati", "Name", email = "dianatikian@gmail.com", role = c("aut", "cre"))
+Description: R interface to the C++ manifold sampling library.
+Encoding: UTF-8
+LinkingTo: Rcpp, RcppEigen
+Imports: Rcpp
+Depends: R (>= 4.0.0)
+SystemRequirements: C++17

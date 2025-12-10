@@ -1,21 +1,21 @@
 CXX = g++
-CXXFLAGS = -Wall -std=c++20 -O2 -I./src \
+CXXFLAGS = -Wall -std=c++20 -O2 -I./ \
            -I/opt/homebrew/include/eigen3 \
            -I/usr/local/include/eigen3
 
 all: ellipse torus
 
-ellipse: example/ellipse.cpp src/manifold.hpp
+ellipse: example/ellipse.cpp manifold.hpp
 	$(CXX) $(CXXFLAGS) example/ellipse.cpp -o ellipse
 
-torus: example/torus.cpp src/manifold.hpp
+torus: example/torus.cpp manifold.hpp
 	$(CXX) $(CXXFLAGS) example/torus.cpp -o torus
 
-python: bindings/python/module.cpp src/manifold.hpp
+python: python/module.cpp manifold.hpp
 	$(CXX) $(CXXFLAGS) \
 		-shared \
 		-fPIC `python3 -m pybind11 --includes` \
-		bindings/python/module.cpp \
+		python/module.cpp \
 		-undefined dynamic_lookup \
 		-o ../saman`python3-config --extension-suffix`
 

@@ -15,7 +15,20 @@ This is done under the assumption that pulled-back density is bounded.
 
 To compile python bindings run `make python`. To compile C++ demos run `make ellipse` or `make torus`.
 
+To install the R package:
+
+```bash
+cd src/R
+R CMD INSTALL .
+```
+
 ## Usage
+
+See [demo.ipynb](demo.ipynb) for detailed examples and applications
+to Monte Carlo integration and estimating the mean Hausdorff distance
+between compact manifolds.
+
+### Python
 
 ```python
 from saman import Manifold
@@ -35,12 +48,26 @@ ellipse = Ellipse()
 samples = ellipse.sample(n_samples=100)
 ```
 
-See `demo.ipynb` for more examples.
+### R
+
+```r
+library(saman)
+
+coord = function(t) c(2 * cos(t[1]), sin(t[1]))
+pushforward = function(t) matrix(c(-2 * sin(t[1]), cos(t[1])), 2, 1)
+
+ellipse = saman.manifold(2, 1, 2.5, c(0), c(2*pi), coord, pushforward)
+samples = ellipse$sample(100)
+```
+
+### C++
+
+If you want to work with C++ directly see the [examples/](src/example/) folder.
 
 ## Todo
 
 - [x] Move core logic to C++
 - [x] Create python bindings
-- [ ] Create R bindings
+- [x] Create R bindings
 - [x] Demo library by computing mean Hausdorff distance.
 - [ ] Write expository article about how this is done.
