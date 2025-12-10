@@ -3,6 +3,7 @@
 
 #include<iostream>
 #include<utility>
+#include<vector>
 
 #include<Eigen/Dense>
 
@@ -11,6 +12,7 @@ class Manifold {
     virtual ~Manifold() = default;
 
     const int n, k;
+    const double vf_bound;
     const Eigen::VectorXd upper, lower;
 
     virtual Eigen::VectorXd coord(const Eigen::VectorXd& u) = 0;
@@ -25,14 +27,20 @@ class Manifold {
       return std::sqrt(this->metric(u).determinant());
     }
 
-    Eigen::VectorXd sample(double M) {
-      Eigen::VectorXd x;
-      double u;
-      do {
-        x = sample_param();
-        u = 0.5 * (Eigen::VectorXd::Random(1)(0) + 1.0);
-      } while (u * M > this->volume_form(x));
-      return this->coord(x);
+    std::vector<Eigen::VectorXd> sample(int n_sample) {
+      std::vector<Eigen::VectorXd> samples;
+
+      for (int i = 0; i < n_sample; i++) {
+        double u;
+        Eigen::VectorXd x;
+        do {
+          x = sample_param();
+          u = 0.5 * (Eigen::VectorXd::Random(1)(0) + 1.0);
+        } while (u * vf_bound > this->volume_form(x));
+        samples.push_back(this->coord(x));
+      }
+
+      return samples;
     }
 
   private:
@@ -43,8 +51,8 @@ class Manifold {
     }
 
   protected:
-    Manifold(int n, int k, Eigen::VectorXd upper, Eigen::VectorXd lower)
-      : n(n), k(k), upper(std::move(upper)), lower(std::move(lower)) {}
+    Manifold(int n, int k, double vf_bound, Eigen::VectorXd lower, Eigen::VectorXd upper)
+      : n(n), k(k), vf_bound(vf_bound), upper(std::move(upper)), lower(std::move(lower)) {}
 };
 
 #endif

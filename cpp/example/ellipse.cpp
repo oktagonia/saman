@@ -11,7 +11,9 @@ class Ellipse : public Manifold {
     double a, b;
 
     Ellipse(double a, double b)
-      : Manifold(2, 1, VectorXd::Constant(1, 0.0), VectorXd::Constant(1, 2.0 * numbers::pi)),
+      : Manifold(2, 1, 2.5,
+                 VectorXd::Constant(1, 0.0),
+                 VectorXd::Constant(1, 2.0 * numbers::pi)),
         a(a), b(b) {}
 
     VectorXd coord(const VectorXd& u) override {
@@ -31,9 +33,7 @@ class Ellipse : public Manifold {
 
 int main() {
   Ellipse e(2.0, 1.0);
-  VectorXd u(1);
-  u << 1.0;
-
-  for (int i = 0; i < 10; i++)
-    cout << "random coord:\n" << e.sample(2.5).transpose() << endl;
+  auto samples = e.sample(10);
+  for (const auto &x : samples)
+    cout << x.transpose() << endl;
 }
