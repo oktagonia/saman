@@ -35,11 +35,11 @@ $$
 
 Evidently, not all coordinate systems are volume-preserving; however, given an arbitrary coordinate
 system $\varphi$, we can hope to find a change of coordinates $\theta$ such that
-$\varphi \circ \theta$ is volume-preserving. In general, $\varphi^*dV = f\,dx_1\cdots dx_k$
+$\varphi \circ \theta$ is volume-preserving. In general, $\varphi^*dV = f dx_1\cdots dx_k$
 for some function $f$. Thus
 
 $$
-(\varphi\circ\theta)^*dV = \theta^*(\varphi^*dV) = (f\circ\theta)\,\theta^*(dx_1\cdots dx_k) = (f\circ\theta) |\det \theta'|\,dx_1\cdots dx_k
+(\varphi\circ\theta)^{*}dV = \theta^{*}(\varphi^{*}dV) = (f\circ\theta)\theta^{*}(dx_1\cdots dx_k) = (f\circ\theta) |\det \theta'|dx_1\cdots dx_k
 $$
 
 must be equal to $dx_1\wedge\cdots\wedge dx_k$. That is, $\theta$ is the solution to the following
@@ -55,7 +55,7 @@ approaches.
 
 The second approach I came up with was much simpler than the first, and I am surprised that I didn't
 think of it first. As before suppose that our manifold is parametrized by the coordinate
-system $\varphi : U \to M$ which pulls the volume form back to $\varphi^*dV = f\,dx_1\cdots dx_k$.
+system $\varphi : U \to M$ which pulls the volume form back to $\varphi^*dV = fdx_1\cdots dx_k$.
 Sample a point $X$ from $U$ using the (possibly unnormalized) density $f$. I claim that $\varphi(X)$
 will follow the uniform distribution on $M$. That is because
 
