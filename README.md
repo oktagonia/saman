@@ -38,9 +38,9 @@ system $\varphi$, we can hope to find a change of coordinates $\theta$ such that
 $\varphi \circ \theta$ is volume-preserving. In general, $\varphi^*dV = f dx_1\cdots dx_k$
 for some function $f$. Thus
 
-<!--$$
-(\varphi\circ\theta)^{*}dV = \theta^*(\varphi^*dV) = (f\circ\theta)\theta^*(dx_1\cdots dx_k) = (f\circ\theta) |\det \theta'|dx_1\cdots dx_k
-$$-->
+$$
+(\varphi\circ\theta)^{\*}dV = \theta^{\*}(\varphi^{\*}dV) = (f\circ\theta)\theta^{\*}(dx_1\cdots dx_k) = (f\circ\theta) |\det \theta'|dx_1\cdots dx_k
+$$
 
 must be equal to $dx_1\wedge\cdots\wedge dx_k$. That is, $\theta$ is the solution to the following
 PDE
@@ -50,7 +50,7 @@ $$
 $$
 
 which is a Monge-Ampere type PDE if you assume that $\theta = u'$ for some function $u$. You can check that in one dimension this PDE is equivalent to the ODE for the arclength parametrization.
-I did not have much like with numerically solving this equation, so I began looking for alternative
+I did not have much luck with numerically solving this equation, so I began looking for alternative
 approaches.
 
 The second approach I came up with was much simpler than the first, and I am surprised that I didn't
