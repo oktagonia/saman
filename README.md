@@ -74,8 +74,8 @@ $f(x) = \det(\varphi'(x)^T \varphi'(x))^{1/2}$. I have perfomed this sampling vi
 method under the following assumptions:
 
 1. The parameter space $U$ is a bounded open rectangle. This is done to simplify the representation on the computer.
-2. The coordinate system $\varphi : U \to M$ is an almost-everywhere parametrization. This a reasonable assumption (see first paragraph) is made to avoid dealing with an atlas. In particular, since points of the manifold that aren't in $\varphi(U)$ is measure zero, no one will notice if the sampler ignores them.
-3. The function $f$ is bounded on $U$. This is not the case in general (e.g., parametrizing $(0,1)$ using $\sqrt{x}$, in which case $f(x) = -1/\sqrt{x}$ is not bounded), but will hold if $\varphi$ can be extended continuously to some compact set containing $U$. I am not sure if this assumption is always compatible with (1), though I cannot produce a counterexample. I believe that it is reasonable.
+2. The coordinate system $\varphi : U \to M$ is an almost-everywhere parametrization. This reasonable assumption (see first paragraph) is made to avoid dealing with an atlas. In particular, since those points of the manifold that aren't in $\varphi(U)$ form a set of measure zero, no one will notice if the sampler ignores them.
+3. The function $f$ is bounded on $U$. This is not the case in general (e.g., parametrizing $(0,1)$ using $\sqrt{x}$, in which case $f(x) = x^{-1/2}/2$ is not bounded), but will hold if $\varphi$ can be extended continuously to some compact set containing $U$. I am not sure if this assumption is always compatible with (1), though I cannot produce a counterexample. I believe that it is reasonable.
 
 Since $f$ is bounded on the rectangle $U$, then there is a constant $c$ such that $f \leq c\cdot\text{vol}(U)\cdot g$ where $g$ is the uniform density on $U$. This justifies
 the use of rejection sampling for this purpose. Though the performance might not be so great for
