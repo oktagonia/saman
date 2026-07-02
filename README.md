@@ -81,6 +81,18 @@ Since $f$ is bounded on the rectangle $U$, then there is a constant $c$ such tha
 the use of rejection sampling for this purpose. Though the performance might not be so great for
 very high-dimensional manifolds.
 
+## Transport Maps and Normalizing Flows
+
+We can also approach the problem from a more explicit transport perspective. We have a uniformly 
+distirbuted random variable $Z$ and we wish to obtain a map $T$ such that the density $f_X$ of
+$X = T(Z)$ is the same as $f$ (i.e., the pullback of the volume form in coordinates). We can find 
+such a $T$ (i.e., obtain an approximate solution to the Monge-Ampere equation) by minimizing the
+KL-divergence between $f_X(x) = 1/\det T'(T^{-1}(X))$ and $f$, which is
+$$
+\operatorname{KL}(f_X \parallel f) = -E[\log\det T'(Z)] - E[\log f(T(Z))].
+$$
+This method is implemented in `saman_normalizing_flows.ipynb`. 
+
 ## Compilation
 
 To compile python bindings run `make python`. To compile C++ demos run `make ellipse` or `make torus`.
@@ -140,4 +152,4 @@ If you want to work with C++ directly see the [examples/](src/example/) folder.
 - [x] Create python bindings
 - [x] Create R bindings
 - [x] Demo library by computing mean Hausdorff distance.
-- [ ] Write expository article about how this is done.
+- [x] Write expository article about how this is done. (see [here](https://oktagonia.github.io/archive/saman.html))
