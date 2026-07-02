@@ -93,7 +93,7 @@ $$
 \text{KL}(f_X \parallel f) = -E[\log\det T'(Z)] - E[\log f(T(Z))].
 $$
 
-This method is implemented in `saman_normalizing_flows.ipynb`. 
+This method is implemented in `saman_normalizing_flows.ipynb` by taking $T$ to be a normalizing flow.
 
 ## Compilation
 
