@@ -90,7 +90,7 @@ such a $T$ (i.e., obtain an approximate solution to the Monge-Ampere equation) b
 KL-divergence between $f_X(x) = 1/\det T'(T^{-1}(X))$ and $f$, which is
 
 $$
-\operatorname{KL}(f_X \parallel f) = -E[\log\det T'(Z)] - E[\log f(T(Z))].
+\text{KL}(f_X \parallel f) = -E[\log\det T'(Z)] - E[\log f(T(Z))].
 $$
 
 This method is implemented in `saman_normalizing_flows.ipynb`. 
