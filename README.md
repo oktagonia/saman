@@ -88,9 +88,11 @@ distirbuted random variable $Z$ and we wish to obtain a map $T$ such that the de
 $X = T(Z)$ is the same as $f$ (i.e., the pullback of the volume form in coordinates). We can find 
 such a $T$ (i.e., obtain an approximate solution to the Monge-Ampere equation) by minimizing the
 KL-divergence between $f_X(x) = 1/\det T'(T^{-1}(X))$ and $f$, which is
+
 $$
 \operatorname{KL}(f_X \parallel f) = -E[\log\det T'(Z)] - E[\log f(T(Z))].
 $$
+
 This method is implemented in `saman_normalizing_flows.ipynb`. 
 
 ## Compilation
